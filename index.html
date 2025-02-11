@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tablero de Pobreza en México (2008-2018)</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            drawPovertyChart();
+            drawCarenciasChart();
+            drawIncomeChart();
+            drawBrechasChart();
+            drawPovertyExtremeChart();
+        }
+
+        function drawPovertyChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Año', 'Pobreza (%)', 'Pobreza Extrema (%)'],
+                ['2008', 44.4, 11.0],
+                ['2010', 46.1, 10.6],
+                ['2012', 45.5, 9.8],
+                ['2014', 46.2, 9.8],
+                ['2016', 43.6, 7.6],
+                ['2018', 41.9, 7.4]
+            ]);
+
+            var options = {
+                title: 'Evolución de la Pobreza en México',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('poverty_chart'));
+            chart.draw(data, options);
+        }
+
+        function drawCarenciasChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Carencia', '2008', '2018'],
+                ['Rezago Educativo', 21.9, 16.9],
+                ['Acceso a Servicios de Salud', 38.4, 16.2],
+                ['Acceso a Seguridad Social', 65.0, 57.3],
+                ['Calidad y Espacios de Vivienda', 17.7, 11.1],
+                ['Acceso a Servicios Básicos en Vivienda', 22.9, 19.8],
+                ['Acceso a la Alimentación', 21.7, 20.4]
+            ]);
+
+            var options = {
+                title: 'Reducción de Carencias Sociales',
+                bars: 'horizontal',
+                legend: { position: 'right' }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('carencias_chart'));
+            chart.draw(data, options);
+        }
+
+        function drawIncomeChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Año', 'Pobreza Extrema por Ingreso (%)', 'Pobreza por Ingreso (%)'],
+                ['2008', 16.8, 49.0],
+                ['2010', 19.4, 52.0],
+                ['2012', 20.0, 51.6],
+                ['2014', 20.6, 53.2],
+                ['2016', 17.5, 50.6],
+                ['2018', 16.8, 48.8]
+            ]);
+
+            var options = {
+                title: 'Pobreza por Ingresos',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('income_chart'));
+            chart.draw(data, options);
+        }
+
+        function drawBrechasChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Grupo', '2008', '2018'],
+                ['Zonas Rurales', 62.5, 55.3],
+                ['Zonas Urbanas', 38.9, 37.6],
+                ['Hablantes de Lengua Indígena', 76.0, 74.9],
+                ['No Hablantes de Lengua Indígena', 41.4, 39.4],
+                ['Mujeres', 44.6, 42.4],
+                ['Hombres', 44.0, 41.4]
+            ]);
+
+            var options = {
+                title: 'Brechas de Pobreza',
+                bars: 'horizontal',
+                legend: { position: 'right' }
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('brechas_chart'));
+            chart.draw(data, options);
+        }
+
+        function drawPovertyExtremeChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Año', 'Pobreza Extrema (%)'],
+                ['2008', 11.0],
+                ['2010', 10.6],
+                ['2012', 9.8],
+                ['2014', 9.8],
+                ['2016', 7.6],
+                ['2018', 7.4]
+            ]);
+
+            var options = {
+                title: 'Evolución de la Pobreza Extrema',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('poverty_extreme_chart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <h1>Tablero de Pobreza en México (2008-2018)</h1>
+    <div id="poverty_chart" style="width: 900px; height: 500px;"></div>
+    <div id="carencias_chart" style="width: 900px; height: 500px;"></div>
+    <div id="income_chart" style="width: 900px; height: 500px;"></div>
+    <div id="brechas_chart" style="width: 900px; height: 500px;"></div>
+    <div id="poverty_extreme_chart" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
