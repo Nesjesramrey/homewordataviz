@@ -1,2 +1,2 @@
 # homewordataviz
-htnl google charts
+html google charts
